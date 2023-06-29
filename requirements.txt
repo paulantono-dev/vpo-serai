@@ -1,0 +1,6 @@
+Flask-Cors
+xlsxwriter
+Flask
+psycopg2-binary
+gunicorn
+pytz
