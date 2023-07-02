@@ -1,5 +1,5 @@
 from apps import *
-from controllers.index import ControllerIndex as c_index
+from controllers.index import CIndex as c_index
 
 @app.route('/',methods=['GET'])
 def index():

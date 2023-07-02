@@ -1,13 +1,12 @@
-from common.utils import get_random_string
 __DICT_ENV = {
     'LOCAL':{
-        'SECRET_KEY':get_random_string(32),
+        'SECRET_KEY':'SERAITEST',
     },
     'STG':{
-        'SECRET_KEY':get_random_string(32),
+        'SECRET_KEY':'SERAITEST',
     },
     'PRD':{
-        'SECRET_KEY':get_random_string(32),
+        'SECRET_KEY':'M0V1NGF0RW4RD',
     },
 }
 DATABASE = {

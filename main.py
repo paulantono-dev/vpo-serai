@@ -1,5 +1,6 @@
 from apps import *
 from views.index import *
+from views.master_user import *
 # penambahan middle session untuk logout ketika tidak ada activitas user =====
 @app.before_request
 def make_session_permanent():

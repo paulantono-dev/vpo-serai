@@ -1,5 +1,8 @@
 import psycopg2
 import global_variable
+from common.logger import Logger
+
+log = Logger()
 
 class Connection:
     def __init__(self,paramDatabase='',**kwargs):
@@ -29,6 +32,41 @@ class Connection:
             data2 = "SELECT STATEMENT SALAH: " + prmSql + " param" + str(prmBinding)
         result = data
         return status, result 
+
+    def selectDataDict(self, select_string, param, tipe='all'):
+        status = True
+        try:
+            v_result = []
+            self._curs.execute(select_string, param)
+            if tipe == 'one':
+                data = self._curs.fetchone()
+                if not data:
+                    v_result = []
+                    return status, v_result
+                v_result = dict(zip([c[0] for c in self._curs.description], data))
+            else:
+                data = self._curs.fetchall()
+                if not data:
+                    v_result = []
+                    return status, v_result
+
+                fieldnames = [name[0] for name in self._curs.description]
+                for row in data:
+                    rowset = []
+                    for field in zip(fieldnames, row):
+                        rowset.append(field)
+                    v_result.append(dict(rowset))
+            return status, v_result
+        except Exception as exc :
+            print(exc)
+            status = False
+            data = "Error : " + str(exc)
+            data2 = "SELECT STATEMENT SALAH: " + select_string + " param" + str(param)
+            log.error(error=data2)
+            # log.error(data2)
+
+        result = data
+        return status, result
     def executeData(self,prmSql,prmBinding):
         status = True
         data = ""

@@ -1,5 +1,4 @@
-from libs import Connection
+from common.models_base import BaseModel
 class ModelIndex:
     def test():
-        conn = Connection('SERAI')
-        return conn.selectData('select current_date',{})
+        return BaseModel().select_data('select current_date',{})
