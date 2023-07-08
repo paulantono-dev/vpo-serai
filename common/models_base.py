@@ -28,7 +28,7 @@ class BaseModel():
         self.__declare_conn()
     
     def __declare_conn(self):
-        self._conn = Connection('SERAI')
+        self._conn = Connection('SERAI',autocommit=False)
         # self.__set_lc()
         self._success_status = {'status':True,'msg':'Berhasil mendapatkan data','data':[]}
         self._success_status_execute = {'status':True,'msg':'Berhasil eksekusi data','data':[]}
@@ -132,7 +132,7 @@ class BaseModel():
     def execute_data(self,prmSql,prmBinding={}):
         rs = self._failed_status_execute
         try:
-            status,result = self._conn.executeDataNoCommit(prmSql,prmBinding)
+            status,result = self._conn.executeData(prmSql,prmBinding)
             self._logger.info(application='',prm_query=prmBinding,prm_sql=prmSql,result_status=status,result_data=f"{result}")
             if not status:
                 self.conn_close()
@@ -147,7 +147,7 @@ class BaseModel():
         self.conn_close()
         rs = self._failed_status_execute
         try:
-            status,result = conn.executeDataNoCommit(prmSql,prmBinding)
+            status,result = conn.executeData(prmSql,prmBinding)
             self._logger.info(application='',prm_query=prmBinding,prm_sql=prmSql,result_status=status,result_data=f"{result}")
             if not status:
                 return rs

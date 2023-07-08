@@ -4,7 +4,7 @@ class CIndex:
     def getData():
         session['list_menu']=[
             {'id':'dashboard','value':'Dashboard','href':'/'},
-            {'id':'master_user','value':'Master User','href':'/master_user'},
+            {'id':'master_user','value':'Master User','href':'/page/master_user/display'},
             {'id':'master_barang','value':'Master Barang','href':'/master_barang'},
             {'id':'master_logistik','value':'Master Logistik','href':'/master_logistik'},
             {'id':'master_stock','value':'Master Stock','href':'/master_stock'},

@@ -19,9 +19,22 @@
     <link href="{{ url_for('static', filename='assets/css/nucleo-svg.css') }}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{{ url_for('static', filename='assets/css/argon-dashboard.css') }}" rel="stylesheet" />
+
+    <script src="{{ url_for('static', filename='js/jquery.3.7.0.min.js') }}"></script>
+    <link href="{{ url_for('static', filename='DataTables/datatables.css') }}" rel="stylesheet"/>
+    <script src="{{ url_for('static', filename='DataTables/datatables.js') }}"></script>
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
+    <script src="{{ url_for('static', filename='js/global.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/event.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ajax.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/sweetalert.min.js') }}"></script>
 </head>
 
+
 <body class="g-sidenav-show   bg-gray-100">
+    <div class="preloader" style="display:none">
+        <img src="{{ url_for('static', filename='assets/img/loading.gif') }}" style="width:10%" alt="spinner">
+    </div>
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
     <aside
         class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
@@ -42,18 +55,23 @@
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
             data-scroll="false">
+            
             <div class="container-fluid py-1 px-3">
-                <ul class="navbar-nav  justify-content-end">
-                    <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-                          <div class="sidenav-toggler-inner">
-                            <i class="sidenav-toggler-line bg-white"></i>
-                            <i class="sidenav-toggler-line bg-white"></i>
-                            <i class="sidenav-toggler-line bg-white"></i>
-                          </div>
-                        </a>
-                      </li>
-                </ul>
+                {%block breadcrumb%}
+                {%endblock%}
+                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                    <ul class="navbar-nav  justify-content-end">
+                        <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                            <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+                            <div class="sidenav-toggler-inner">
+                                <i class="sidenav-toggler-line bg-white"></i>
+                                <i class="sidenav-toggler-line bg-white"></i>
+                                <i class="sidenav-toggler-line bg-white"></i>
+                            </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
         <!-- End Navbar -->

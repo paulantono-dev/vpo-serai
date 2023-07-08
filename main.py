@@ -28,4 +28,4 @@ def page_not_found(e):
 
 
 if __name__=='__main__':
-    app.run('localhost',port=8080)
+    app.run('localhost',port=8080,debug=True)

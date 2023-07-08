@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{{ super() }}
+
+{%block breadcrumb%}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm text-white active" aria-current="page">Master User</li>
+        </ol>
+        <h6 class="font-weight-bolder text-white mb-0">Display Master User</h6>
+    </nav>
+{%endblock%}
+
+{%block content%}
+{%set data = result.data%}
+{%set msg = result.msg%}
+{%set status = result.status%}
+{%if not status%}
+<div class="bg-white">{{msg}}</div>
+{%else%}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <div class="d-flex align-items-center">
+                    <p class="mb-0">Master User</p>
+                    <a class="btn btn-primary btn-sm ms-auto" href="/page/master_user/insert">Tambah User</a>
+                  </div>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table table-test align-items-center mb-0" id="tableMasterUser" width="100%">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Username
+                                </th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Status Aktif</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for data in data.data_user%}
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('username','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    {%set labelActive = 'Offline'%}
+                                    {%set color = 'bg-gradient-secondary'%}
+                                    {%if data.get('status_aktif','') == 'Y'%}
+                                        {%set labelActive = 'Active'%}
+                                        {%set color = 'bg-gradient-success'%}
+                                    {%endif%}
+                                    <span class="badge badge-sm {{color}}">{{labelActive}}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="/page/master_user/update?id={{data.user_id}}" class="text-secondary font-weight-bold text-xs"
+                                        data-toggle="tooltip" data-original-title="Edit user">
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let datatable = defaultDatatable('tableMasterUser')
+</script>
+{%endif%}
+{%endblock%}

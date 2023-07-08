@@ -17,7 +17,7 @@ def generateMd5(prmString):
     try:
         datetimeNow = generateDateNow()
         datetimeString = datetimeNow.strftime('%m%d%Y%H%M%S%f')
-        vText = prmString+ENV['SECRET_KEY']+datetimeString
+        vText = prmString+ENV['SECRET_KEY']
         vMd5 = hashlib.md5()
         vMd5.update(vText.encode())
         vConvertText = vMd5.hexdigest()

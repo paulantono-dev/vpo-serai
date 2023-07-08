@@ -5,7 +5,7 @@ from common.logger import Logger
 log = Logger()
 
 class Connection:
-    def __init__(self,paramDatabase='',**kwargs):
+    def __init__(self,paramDatabase='',autocommit=True):
         database = ''
         dictDb =global_variable.DATABASE.get(paramDatabase,{})
         db_user = dictDb.get('USER')
@@ -17,7 +17,7 @@ class Connection:
         paramDatabase += db_user+"' password='"+db_pass+"' "
         paramDatabase += 'port= '+db_port
         database = paramDatabase
-        self.autocommit = kwargs.get('autocommit')
+        self.autocommit = autocommit
         self._conn = psycopg2.connect(database)
         self._curs = self._conn.cursor()
     def selectData(self,prmSql,prmBinding):
