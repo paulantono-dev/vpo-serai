@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{{ super() }}
+
+
+{%block breadcrumb%}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="/page/master_mitra/display">Master Mitra</a></li>
+          <li class="breadcrumb-item text-sm text-white active" aria-current="page">Insert</li>
+        </ol>
+        <h6 class="font-weight-bolder text-white mb-0">Insert Master Mitra</h6>
+    </nav>
+{%endblock%}
+{%block content%}
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="d-flex align-items-center">
+                    <p class="mb-0">Tambah Mitra</p>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="" id="formInsertMasterMitra">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Kode Mitra</label>
+                                <input class="form-control" maxlength="10" type="text" name="kode_mitra">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">NPWP Mitra</label>
+                                <input class="form-control" maxlength="30" type="text" name="npwp">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Nama Mitra</label>
+                                <input class="form-control" maxlength="100" type="text" name="nama_mitra">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Nama Pemilik</label>
+                                <input class="form-control" maxlength="100" type="text" name="nama_pemilik">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Alamat Mitra</label>
+                                <textarea class="form-control" maxlength="500" type="text" name="alamat"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Telp Mitra</label>
+                                <input class="form-control" maxlength="20" type="text" name="telp">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Email Mitra</label>
+                                <input class="form-control" maxlength="200" type="text" name="email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-check">
+                                <label for="example-text-input" class="form-control-label">Status Aktif</label>
+                                <input class="form-check-input" type="checkbox" name="status_aktif" value="Y">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <a class="btn btn-outline-danger btn-sm" href="/page/master_mitra/display">Kembali</a>
+                        <button type="button" class="btn btn-primary btn-sm ms-2" name="simpan_data">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

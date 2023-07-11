@@ -2,18 +2,26 @@
 {%set activeMenu = activeMenu%}
 <ul class="navbar-nav">
     {%for sb in sidebar%}
-        <li class="nav-item">
-            {%set active = ''%}
-            {%if activeMenu == sb.get('id','')%}
-                {%set active = 'active'%}
-            {%endif%}
-            <a class="nav-link {{active}}" href="{{sb.get('href','#')}}">
-                <div
-                    class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                    <i class="ni text-primary text-sm opacity-10"></i>
-                </div>
-                <span class="nav-link-text ms-1">{{sb.get('value','No Defined')}}</span>
-            </a>
-        </li>
+
+        {%if sb.get('id','')=="-"%}
+            <!-- Section Sidebar -->
+            <li class="nav-item mt-3">
+                <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">{{sb.get('value','')}}</h6>
+            </li>
+        {%else%}
+            <li class="nav-item">
+                {%set active = ''%}
+                {%if activeMenu == sb.get('id','')%}
+                    {%set active = 'active'%}
+                {%endif%}
+                <a class="nav-link {{active}}" href="{{sb.get('href','#')}}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="{{sb.get('icons','')}} text-lg opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">{{sb.get('value','No Defined')}}</span>
+                </a>
+            </li>
+        {%endif%}
     {%endfor%}
 </ul>
