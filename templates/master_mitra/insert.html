@@ -13,6 +13,7 @@
     </nav>
 {%endblock%}
 {%block content%}
+{%set data = result.data%}
 <div class="row">
     <div class="col">
         <div class="card">
@@ -76,6 +77,20 @@
                             <div class="form-group">
                                 <label for="example-text-input" class="form-control-label">Email Mitra</label>
                                 <input class="form-control" maxlength="200" type="text" name="email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Role Mitra</label>
+                                <select class="form-control" name="role_mitra">
+                                    <option value="">Pilih Role</option>
+                                    {%for role in data.data_role_mitra%}
+                                        <option value="{{role.id}}">{{role.value}}</option>
+                                    {%endfor%}
+                                </select>
                             </div>
                         </div>
                     </div>

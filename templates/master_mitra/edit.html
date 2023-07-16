@@ -14,6 +14,7 @@
 {%endblock%}
 {%block content%}
 {%set data = result.data.get('data_mitra',{})%}
+{%set data_ms_role = result.data.get('data_role_mitra',{})%}
 {%set msg = result.msg%}
 {%set status = result.status%}
 {%if not status%}
@@ -83,6 +84,20 @@
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Email Mitra</label>
                                     <input class="form-control" maxlength="200" type="text" name="email" value="{{data.email_mitra}}">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Role Mitra</label>
+                                    <select class="form-control" name="role_mitra">
+                                        <option value="">Pilih Role</option>
+                                        {%for role in data_ms_role%}
+                                            <option value="{{role.id}}" {%if role.id == data.role_mitra%} selected {%endif%}>{{role.value}}</option>
+                                        {%endfor%}
+                                    </select>
                                 </div>
                             </div>
                         </div>

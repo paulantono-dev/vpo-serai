@@ -8,7 +8,8 @@ def page_msm(page):
         getData = CMasterMitra().get_data_display_page(request.args)
         return render_template('master_mitra/display.html',activeMenu='master_mitra',result=getData)
     elif page == 'insert':
-        return render_template('master_mitra/insert.html',activeMenu='master_mitra')
+        getData = CMasterMitra().get_data_display_insert_page()
+        return render_template('master_mitra/insert.html',activeMenu='master_mitra',result=getData)
     elif page == 'update':
         getData = CMasterMitra().get_data_display_page(request.args)
         return render_template('master_mitra/edit.html',activeMenu='master_mitra',result=getData)

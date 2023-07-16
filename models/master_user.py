@@ -8,18 +8,20 @@ class MMasteUser:
                 msu_username,
                 msu_password,
                 msu_status_aktif,
-                msu_id
+                msu_id,
+                msu_role_user
             )
             VALUES(
                 %(username)s,
                 %(password)s,
                 %(status_aktif)s,
-                %(username_id)s
+                %(username_id)s,
+                %(role_user)s
             )
         """
         return BaseModel().execute_data(vSql,prmBinding)
     def update_data_master_user(self,prmBinding):
-        querySet = "msu_status_aktif = %(status_aktif)s "
+        querySet = "msu_status_aktif = %(status_aktif)s,msu_role_user = %(role_user)s "
         if prmBinding.get('new_password','')!="":
             querySet+=", msu_password = %(new_password)s"
         vSql = f"""
@@ -45,7 +47,8 @@ class MMasteUser:
             SELECT 
                 msu_username username,
                 msu_status_aktif status_aktif,
-                msu_id user_id
+                msu_id user_id,
+                msu_role_user role_user
             from serai.ms_users
             {vWhere}
         """

@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{{ super() }}
+
+{%block breadcrumb%}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm text-white active" aria-current="page">Master Mitra</li>
+        </ol>
+        <h6 class="font-weight-bolder text-white mb-0">Display Master Mitra</h6>
+    </nav>
+{%endblock%}
+
+{%block content%}
+{%set data = result.data%}
+{%set msg = result.msg%}
+{%set status = result.status%}
+{%if not status%}
+<div class="bg-white">{{msg}}</div>
+{%else%}
+<div class="row">
+    <div class="col-12">
+        <div class="card mb-4">
+            <div class="card-header pb-0">
+                <div class="d-flex align-items-center">
+                    <p class="mb-0">Master Mitra</p>
+                    <a class="btn btn-primary btn-sm ms-auto" href="/page/master_stock/insert">Tambah Stock</a>
+                  </div>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                    <table class="table table-test align-items-center mb-0" id="tableMasterStock" width="100%">
+                        <thead>
+                            <tr>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kode Stock
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Barang
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Mitra
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stock
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga Jual
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Harga Beli
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Start Date
+                                </th>
+                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">End Date
+                                </th>
+                                <th
+                                    class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    Status Aktif</th>
+                                <th class="text-secondary opacity-7"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for data in data.data_stock%}
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('kode_stock','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('nama_barang','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('nama_mitra','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('stock','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('harga_beli','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('harga_jual','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('start_date','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">{{data.get('end_date','')}}</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    {%set labelActive = 'TIDAK AKTIF'%}
+                                    {%set color = 'bg-gradient-secondary'%}
+                                    {%if data.get('status_aktif','') == 'Y'%}
+                                        {%set labelActive = 'AKTIF'%}
+                                        {%set color = 'bg-gradient-success'%}
+                                    {%endif%}
+                                    <span class="badge badge-sm {{color}}">{{labelActive}}</span>
+                                </td>
+                                <td class="align-middle">
+                                    <a href="/page/master_stock/update?id={{data.kode_stock}}" class="text-secondary font-weight-bold text-xs"
+                                        data-toggle="tooltip" data-original-title="Edit Stock">
+                                        Edit
+                                    </a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    let datatable = defaultDatatable('tableMasterStock')
+</script>
+{%endif%}
+{%endblock%}

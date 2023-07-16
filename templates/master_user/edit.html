@@ -16,6 +16,7 @@
 
 {%block content%}
 {%set data = result.data.get('data_user',{})%}
+{%set data_ms_role = result.data.get('data_ms_role',{})%}
 {%set msg = result.msg%}
 {%set status = result.status%}
 {%if not status%}
@@ -39,6 +40,19 @@
                                     <div class="form-group">
                                         <label for="example-text-input" class="form-control-label">Username</label>
                                         <input class="form-control" maxlength="10" type="text" name="username" readonly value="{{data.username}}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="example-text-input" class="form-control-label">Role User</label>
+                                        <select class="form-control" name="role_user">
+                                            <option value="">Pilih Role</option>
+                                            {%for role in data_ms_role%}
+                                                <option value="{{role.id}}" {%if role.id == data.role_user%} selected {%endif%}>{{role.value}}</option>
+                                            {%endfor%}
+                                        </select>
                                     </div>
                                 </div>
                             </div>

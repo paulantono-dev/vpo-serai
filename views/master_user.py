@@ -1,5 +1,6 @@
 from apps import *
 from controllers.master_user import CMasterUser
+from models.views import MViews
 
 
 @app.route('/page/master_user/<page>',methods=['GET'])
@@ -8,7 +9,8 @@ def page_msu(page):
         getData = CMasterUser().get_data_display_page(request.args)
         return render_template('master_user/display.html',activeMenu='master_user',result=getData)
     elif page == 'insert':
-        return render_template('master_user/insert.html',activeMenu='master_user')
+        getData = CMasterUser().get_data_display_insert_page()
+        return render_template('master_user/insert.html',activeMenu='master_user',result=getData)
     elif page == 'update':
         getData = CMasterUser().get_data_display_page(request.args)
         return render_template('master_user/edit.html',activeMenu='master_user',result=getData)

@@ -13,6 +13,7 @@
     </nav>
 {%endblock%}
 {%block content%}
+{%set data = result.data%}
 <div class="row">
     <div class="col">
         <div class="card">
@@ -39,6 +40,20 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="example-text-input" class="form-control-label">Role User</label>
+                                <select class="form-control" name="role_user">
+                                    <option value="">Pilih Role</option>
+                                    {%for role in data.data_ms_role%}
+                                        <option value="{{role.id}}">{{role.value}}</option>
+                                    {%endfor%}
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col">
                             <div class="form-check">

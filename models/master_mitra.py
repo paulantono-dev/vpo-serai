@@ -14,7 +14,8 @@ class MMasterMitra:
                     msm_nama_pemilik, 
                     msm_email_mitra, 
                     msm_npwp, 
-                    msm_status_aktif
+                    msm_status_aktif,
+                    msm_role
                 )
             VALUES(
                 %(kode_mitra)s,
@@ -24,7 +25,8 @@ class MMasterMitra:
                 %(nama_pemilik)s,
                 %(email_mitra)s,
                 %(npwp_mitra)s,
-                %(status_aktif)s
+                %(status_aktif)s,
+                %(role_mitra)s
             )
         """
         return BaseModel().execute_data(vSql,prmBinding)
@@ -40,9 +42,11 @@ class MMasterMitra:
                 msm_nama_pemilik=%(nama_pemilik)s, 
                 msm_email_mitra=%(email_mitra)s, 
                 msm_npwp=%(npwp_mitra)s, 
-                msm_status_aktif=%(status_aktif)s
+                msm_status_aktif=%(status_aktif)s,
+                msm_role=%(role_mitra)s
             where msm_code = %(kode_mitra)s
         """
+        print(vSql%prmBinding)
         return BaseModel().execute_data(vSql,prmBinding)
 
     def get_data_master_mitra(self,prmBinding):
@@ -60,7 +64,8 @@ class MMasterMitra:
                 msm_nama_pemilik nama_pemilik, 
                 msm_email_mitra email_mitra, 
                 msm_npwp npwp_mitra, 
-                msm_status_aktif status_aktif
+                msm_status_aktif status_aktif,
+                msm_role role_mitra
             from serai.ms_mitra
             {vWhere}
         """

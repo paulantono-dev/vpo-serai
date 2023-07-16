@@ -1,9 +1,27 @@
 from models.master_user import MMasteUser
+from models.views import MViews
 from common.validator import ValidatorInput
 from common import utils
 class CMasterUser:
     def __init__(self):
         self.validator = ValidatorInput()
+
+    def get_data_display_insert_page(self):
+        rs = {'status':False,'msg':'Terdapat kesalahan pada saat transaksi data','data':{}}
+        try:
+            getRoleMasterUser = MViews().get_ms_role()
+            if not getRoleMasterUser['status']:
+                rs['msg']='Gagal mendapatkan data master role user'
+                return rs
+            rs['data']={
+                'data_ms_role':getRoleMasterUser['data']
+            }
+            rs['status']=True
+            rs['msg']='Berhasil mendapatkan data'
+        except Exception as e:
+            print(e)
+        return rs
+
 
     def get_data_display_page(self,prmData):
         rs = {'status':False,'msg':'Terdapat kesalahan pada saat transaksi data','data':{}}
@@ -14,10 +32,12 @@ class CMasterUser:
             if not getData['status']:
                 rs['msg']='Gagal mendapatkan data user'
                 return rs
+            getRoleMasterUser = MViews().get_ms_role()
             rs['msg']='Berhasil mendapatkan data master user'
             rs['status']=True
             rs['data']={
-                'data_user':getData['data']
+                'data_user':getData['data'],
+                'data_ms_role':getRoleMasterUser['data']
             }
         except Exception as e:
             print(e)
@@ -28,6 +48,7 @@ class CMasterUser:
             username = prmData.get('username')
             password = prmData.get('password')
             statusaktif = prmData.get('status_aktif','N')
+            role_user = prmData.get('role_user','')
 
             if username=="":
                 rs['msg']='Username tidak boleh kosong'
@@ -38,13 +59,16 @@ class CMasterUser:
             if statusaktif=="":
                 rs['msg']='Status Aktif tidak boleh kosong'
                 return rs
-            
+            if role_user=="":
+                rs['msg']='Role user tidak boleh kosong'
+                return rs
 
             # Validasi
             validator = [
                 self.validator.text_numeric(username,length=10),
                 self.validator.text_numeric(password,length=20),
                 self.validator.text_numeric(statusaktif,length=1),
+                self.validator.text_numeric(role_user,length=10),
 
             ]
             for validStatus in validator:
@@ -71,7 +95,8 @@ class CMasterUser:
                 'username':username,
                 'password':md5password,
                 'status_aktif':statusaktif,
-                'username_id':usernameId
+                'username_id':usernameId,
+                'role_user':role_user
             }
 
             # check is exist
@@ -100,6 +125,7 @@ class CMasterUser:
             old_password = prmData.get('old_password','')
             new_password = prmData.get('new_password','')
             statusaktif = prmData.get('status_aktif','N')
+            role_user = prmData.get('role_user','')
 
             if username=="":
                 rs['msg']='Username tidak boleh kosong'
@@ -115,12 +141,17 @@ class CMasterUser:
             if statusaktif=="":
                 rs['msg']='Status Aktif tidak boleh kosong'
                 return rs
+            
+            if role_user=="":
+                rs['msg']='Role user tidak boleh kosong'
+                return rs
             # Validasi
             validator = [
                 self.validator.text_numeric(username,length=10),
                 self.validator.text_numeric(old_password,length=20),
                 self.validator.text_numeric(new_password,length=20),
                 self.validator.text_numeric(statusaktif,length=1),
+                self.validator.text_numeric(role_user,length=10),
             ]
             for validStatus in validator:
                 if not validStatus['status']:
@@ -154,7 +185,8 @@ class CMasterUser:
                 'old_password':old_md5password,
                 'status_aktif':statusaktif,
                 'username_id':usernameId,
-                'change_password':change_password
+                'change_password':change_password,
+                'role_user':role_user
             }
             # check is exist
             checkIsExist = MMasteUser().check_is_password_valid(prmBinding)
