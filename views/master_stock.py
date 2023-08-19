@@ -8,7 +8,7 @@ def page_mss(page):
         getData = CMasterStock().get_data_display_page(request.args)
         return render_template('master_stock/display.html',activeMenu='master_stock',result=getData)
     elif page == 'insert':
-        getData = CMasterStock().get_data_display_insert_page()
+        getData = CMasterStock().get_data_display_page_insert()
         return render_template('master_stock/insert.html',activeMenu='master_stock',result=getData)
     elif page == 'update':
         getData = CMasterStock().get_data_display_page(request.args)

@@ -25,7 +25,7 @@ class CMasterStock:
             print(e)
         return rs
     def get_data_display_page_insert(self):
-        return
+        return {'status':True,'msg':'Berhasil mendapatkan data','data':{}}
     def insert_data(self,prmData):
         rs = {'status':False,'msg':'Terdapat kesalahan pada saat transaksi data','data':{}}
         try:

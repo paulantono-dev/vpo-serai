@@ -46,7 +46,6 @@ class MMasterMitra:
                 msm_role=%(role_mitra)s
             where msm_code = %(kode_mitra)s
         """
-        print(vSql%prmBinding)
         return BaseModel().execute_data(vSql,prmBinding)
 
     def get_data_master_mitra(self,prmBinding):

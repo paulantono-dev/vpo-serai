@@ -42,4 +42,12 @@ $(document).ready(function(){
             let formData = getValuesFormData('formUpdateMasterMitra')
             update_data_master_mitra(formData)
         })
+    $('#formInsertMasterStock')
+        .on('click','input[name="kode_mitra"]',function(){
+            lov_mitra()
+        })
+        .on('click','input[name="kode_barang"]',function(){
+            alert('clicked')
+        })
+    
 })

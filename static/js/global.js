@@ -5,8 +5,13 @@ function loadingBarStart(){
 function loadingBarStop(){
     $('.preloader').css({ 'display':'none' });
 }
-function defaultDatatable(prmId){
-    $(`#${prmId}`).DataTable({
+function resetModal(){
+    $('.modal-title').html('')
+    $('.modal-body').html('')
+    $('.modal-footer').html('')
+}
+function defaultDatatable(prmId,prmProperty = {}){
+    let prop = {
         bPaginate: false,
         bInfo: false,
         scrollY: "300px",
@@ -21,8 +26,12 @@ function defaultDatatable(prmId){
         fnDrawCallback: function(oSettings) {
             $( window ).trigger('resize');
         },
-    })
+        ...prmProperty
+    }
+    return $(`#${prmId}`).DataTable(prop)
 }
+
+
 function get_value_form_obj(obj,key){
     let value = ''
     if(obj[key]){
@@ -107,4 +116,23 @@ function alertError(prmMessage,prmUrl='/'){
         prmMessage,
         "error"
     );
+}
+
+function CustomDatatable(prmObject){
+    let columns = prmObject['columns_header']
+    let idTable = prmObject['id']
+    let htmlTable = `<table class="table table-striped" id='${idTable}' width=100%>`
+    htmlTable += '<thead><tr>'
+    columns.forEach(function(e){
+        htmlTable+=`<td><b>${e.header}</b></td>`
+    })
+    htmlTable+='</tr></thead>'
+    htmlTable+=`
+        <tbody></tbody>
+    `
+    htmlTable+='</table>'
+    return htmlTable
+
+
+    
 }

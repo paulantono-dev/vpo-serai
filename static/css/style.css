@@ -13,3 +13,10 @@
     opacity: 1;
     transform: opacity 1s linear;
   }
+
+input[type='text'].lov{
+  background-color: yellow;
+}
+input[type='text'].primary-key {
+  background-color: aqua;
+}

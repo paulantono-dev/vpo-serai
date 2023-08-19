@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Kode Mitra</label>
+                                    <label class="form-control-label">Kode Mitra</label>
                                     <input class="form-control" maxlength="10" type="text" name="kode_mitra" readonly value="{{data.kode_mitra}}">
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">NPWP Mitra</label>
+                                    <label class="form-control-label">NPWP Mitra</label>
                                     <input class="form-control" maxlength="30" type="text" name="npwp" value="{{data.npwp_mitra}}">
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nama Mitra</label>
+                                    <label class="form-control-label">Nama Mitra</label>
                                     <input class="form-control" maxlength="100" type="text" name="nama_mitra" value="{{data.nama_mitra}}">
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Nama Pemilik</label>
+                                    <label class="form-control-label">Nama Pemilik</label>
                                     <input class="form-control" maxlength="100" type="text" name="nama_pemilik" value="{{data.nama_pemilik}}">
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Alamat Mitra</label>
+                                    <label class="form-control-label">Alamat Mitra</label>
                                     <textarea class="form-control" maxlength="500" type="text" name="alamat">{{data.alamat_mitra}}</textarea>
                                 </div>
                             </div>
@@ -74,7 +74,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Telp Mitra</label>
+                                    <label class="form-control-label">Telp Mitra</label>
                                     <input class="form-control" maxlength="20" type="text" name="telp" value="{{data.telp_mitra}}">
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Email Mitra</label>
+                                    <label class="form-control-label">Email Mitra</label>
                                     <input class="form-control" maxlength="200" type="text" name="email" value="{{data.email_mitra}}">
                                 </div>
                             </div>
@@ -91,7 +91,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Role Mitra</label>
+                                    <label class="form-control-label">Role Mitra</label>
                                     <select class="form-control" name="role_mitra">
                                         <option value="">Pilih Role</option>
                                         {%for role in data_ms_role%}
@@ -105,7 +105,7 @@
                         <div class="row">
                             <div class="col">
                                 <div class="form-check">
-                                    <label for="example-text-input" class="form-control-label">Status Aktif</label>
+                                    <label class="form-control-label">Status Aktif</label>
                                     <input class="form-check-input" type="checkbox" name="status_aktif" value="Y" {%if data.status_aktif == 'Y'%} checked {%endif%}>
                                 </div>
                             </div>

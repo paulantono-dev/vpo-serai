@@ -21,12 +21,13 @@
     <link id="pagestyle" href="{{ url_for('static', filename='assets/css/argon-dashboard.css') }}" rel="stylesheet" />
 
     <script src="{{ url_for('static', filename='js/jquery.3.7.0.min.js') }}"></script>
-    <link href="{{ url_for('static', filename='DataTables/datatables.css') }}" rel="stylesheet"/>
+    <link href="{{ url_for('static', filename='DataTables/datatables.css') }}" rel="stylesheet" />
     <script src="{{ url_for('static', filename='DataTables/datatables.js') }}"></script>
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css">
     <script src="{{ url_for('static', filename='js/global.js') }}"></script>
     <script src="{{ url_for('static', filename='js/event.js') }}"></script>
     <script src="{{ url_for('static', filename='js/ajax.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/lov.js') }}"></script>
     <script src="{{ url_for('static', filename='js/sweetalert.min.js') }}"></script>
 </head>
 
@@ -35,6 +36,8 @@
     <div class="preloader" style="display:none">
         <img src="{{ url_for('static', filename='assets/img/loading.gif') }}" style="width:10%" alt="spinner">
     </div>
+    <!-- pop up window -->
+
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
     <aside
         class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
@@ -55,7 +58,7 @@
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
             data-scroll="false">
-            
+
             <div class="container-fluid py-1 px-3">
                 {%block breadcrumb%}
                 {%endblock%}
@@ -63,11 +66,11 @@
                     <ul class="navbar-nav  justify-content-end">
                         <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                             <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
-                            <div class="sidenav-toggler-inner">
-                                <i class="sidenav-toggler-line bg-white"></i>
-                                <i class="sidenav-toggler-line bg-white"></i>
-                                <i class="sidenav-toggler-line bg-white"></i>
-                            </div>
+                                <div class="sidenav-toggler-inner">
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                    <i class="sidenav-toggler-line bg-white"></i>
+                                </div>
                             </a>
                         </li>
                     </ul>
@@ -79,20 +82,44 @@
             <!-- Content -->
             {%block content%}{%endblock%}
         </div>
+
+
     </main>
+    <!-- Modal -->
+    <div class="modal fade" tabindex="-1" role="dialog"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+                    <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
         $(window).on('beforeunload', function () {
             loadingBarStart()
         });
         var win = navigator.platform.indexOf('Win') > -1;
         if (win && document.querySelector('#sidenav-scrollbar')) {
-          var options = {
-            damping: '0.5'
-          }
-          Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+            var options = {
+                damping: '0.5'
+            }
+            Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
-      </script>
-    
+    </script>
+
     <!--   Core JS Files   -->
     <script src="{{ url_for('static', filename='assets/js/core/popper.min.js') }}"></script>
     <script src="{{ url_for('static', filename='assets/js/core/bootstrap.min.js') }}"></script>

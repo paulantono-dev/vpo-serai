@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{{ super() }}
+
+
+{%block breadcrumb%}
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
+          <li class="breadcrumb-item text-sm"><a class="opacity-5 text-white" href="/page/master_mitra/display">Master Stock</a></li>
+          <li class="breadcrumb-item text-sm text-white active" aria-current="page">Insert</li>
+        </ol>
+        <h6 class="font-weight-bolder text-white mb-0">Insert Master Stock</h6>
+    </nav>
+{%endblock%}
+{%block content%}
+{%set data = result.data%}
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-header pb-0">
+                <div class="d-flex align-items-center">
+                    <p class="mb-0">Tambah Stock</p>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="" id="formInsertMasterStock">
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label class="form-control-label">Kode Mitra</label>
+                                <input class="form-control lov" maxlength="10" type="text" readonly name="kode_mitra">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Nama Mitra</label>
+                                <input class="form-control" maxlength="10" type="text" readonly name="nama_mitra">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label class="form-control-label">Kode Barang</label>
+                                <input class="form-control lov" maxlength="10" type="text" readonly name="kode_barang">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Nama Barang</label>
+                                <input class="form-control" maxlength="10" type="text" readonly name="nama_barang">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Harga Beli</label>
+                                <input class="form-control" maxlength="10" type="text" name="harga_beli">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Harga Jual</label>
+                                <input class="form-control" maxlength="10" type="text" name="harga_jual">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label class="form-control-label">Stock Barang</label>
+                                <input class="form-control" maxlength="10" type="text" name="stock_barang">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end mt-3">
+                        <a class="btn btn-outline-danger btn-sm" href="/page/master_mitra/display">Kembali</a>
+                        <button type="button" class="btn btn-primary btn-sm ms-2" name="simpan_data">Simpan</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}
