@@ -9,7 +9,7 @@ class CIndex:
             {'id':'master_barang','value':'Master Barang','href':'/page/master_barang/display','icons':'ni ni-app text-success'},
             {'id':'master_mitra','value':'Master Mitra','href':'/page/master_mitra/display','icons':'ni ni-badge text-info'},
             # {'id':'master_logistik','value':'Master Logistik','href':'/master_logistik'},
-            {'id':'master_stock','value':'Master Stock','href':'/page/master_stock/display','icons':'ni ni-stock'},
+            {'id':'master_stock','value':'Master Stock','href':'/page/master_stock/display','icons':'ni ni-box-2 text-warning'},
         ]
         session['user_login']='S23070001'
         getData = m_index.test()

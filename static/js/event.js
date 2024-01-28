@@ -47,7 +47,11 @@ $(document).ready(function(){
             lov_mitra()
         })
         .on('click','input[name="kode_barang"]',function(){
-            alert('clicked')
+            lov_kode_barang()
+        })
+        .on('click','button[name="simpan_data"]',function(){
+            let formData = getValuesFormData('formInsertMasterStock')
+            save_data_master_stock(formData)
         })
     
 })

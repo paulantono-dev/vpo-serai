@@ -133,3 +133,25 @@ function update_data_master_mitra(prmData){
         loadingBarStop()
     })
 }
+function save_data_master_stock(prmData){
+    const url = "/api/master_stock/insert"
+    loadingBarStart()
+    let sendRequest = $.ajax({
+        method: "POST",
+        url: url,
+        data: prmData,
+        success:function(response,status){
+            if(!response.status){
+                alertError(response.msg)
+                return false
+            }
+            alertReloadCallbackFunction(response.msg,function(){
+                window.location.href='/page/master_stock/display'
+            })
+        },
+    })
+    sendRequest.done(function(data){
+        console.log('Done Request...')
+        loadingBarStop()
+    })
+}

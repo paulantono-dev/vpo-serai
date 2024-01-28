@@ -12,3 +12,10 @@ class CLov:
         except Exception as e:
             print(e)
         return rs
+    def get_ms_barang(self,prmData):
+        rs = {'status':False,'msg':'Terdapat kesalahan pada saat transaksi data','data':{}}
+        try:
+            rs = MLov().lov_get_ms_barang({})
+        except Exception as e:
+            print(e)
+        return rs

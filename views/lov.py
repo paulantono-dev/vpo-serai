@@ -7,4 +7,6 @@ def api_lov(type_request):
     rs = {'status':False,'msg':'Invalid request !','data':{}}
     if type_request=='mitra':
         rs = CLov().get_ms_mitra(prmData)
+    elif type_request=='barang':
+        rs = CLov().get_ms_barang(prmData)
     return jsonify(rs)

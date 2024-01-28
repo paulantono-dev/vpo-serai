@@ -11,3 +11,12 @@ class MLov:
             where msm_status_aktif = 'Y'
         """
         return BaseModel().select_data(vSql,prmBinding,fetch='all')
+    def lov_get_ms_barang(self,prmBinding={}):
+        vSql = """
+            SELECT 
+                msb_code kode_barang,
+                msb_desc nama_barang
+            FROM serai.ms_barang
+            WHERE msb_status_aktif = 'Y'
+        """
+        return BaseModel().select_data(vSql,prmBinding,fetch='all')

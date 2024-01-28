@@ -11,16 +11,17 @@ class MMasterStock:
             vWhere = " and mss_code = %(kode_stock)s"
         vSql = f"""
             SELECT
-                mss_msm_code,
-                MSM_NAMA_MITRA, 
-                mss_msb_code, 
-                MSB_DESC,
-                mss_harga_beli, 
-                mss_harga_jual, 
-                mss_stock, 
-                mss_start_date, 
-                mss_end_date, 
-                mss_status_aktif
+                mss_code kode_stock,
+                mss_msm_code kode_mitra,
+                MSM_NAMA_MITRA nama_mitra, 
+                mss_msb_code kode_barang, 
+                MSB_DESC nama_barang,
+                mss_harga_beli harga_beli, 
+                mss_harga_jual harga_jual, 
+                mss_stock stock, 
+                to_char(mss_start_date,'DD-Mon-YYYY') start_date , 
+                to_char(mss_end_date,'DD-Mon-YYYY') end_date, 
+                mss_status_aktif status_aktif
             FROM 
                 SERAI.MS_STOCK,
                 SERAI.MS_BARANG,

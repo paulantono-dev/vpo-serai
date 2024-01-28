@@ -5,7 +5,7 @@ from libs import *
 
 class CMasterStock:
     def __init__(self):
-        self.__validator = ValidatorInput()
+        self.validator = ValidatorInput()
     
     def get_data_display_page(self,prmData):
         rs = {'status':False,'msg':'Terdapat kesalahan pada saat transaksi data','data':{}}
@@ -19,7 +19,7 @@ class CMasterStock:
             rs['msg']='Berhasil mendapatkan data master stock'
             rs['status']=True
             rs['data']={
-                'data_mitra':getData['data']
+                'data_stock':getData['data']
             }
         except Exception as e:
             print(e)
@@ -33,9 +33,9 @@ class CMasterStock:
             kode_barang = prmData.get('kode_barang','')
             harga_beli = prmData.get('harga_beli','')
             harga_jual = prmData.get('harga_jual','')
-            stock = prmData.get('stock','')
-            start_date = prmData.get('start_date','')
-            end_date = prmData.get('end_date','')
+            stock = prmData.get('stock_barang','')
+            start_date = prmData.get('start_date','01-01-2024')
+            end_date = prmData.get('end_date','01-01-3000')
             creator = session.get('user_login','')
 
             for value in (kode_mitra,kode_barang,harga_beli,harga_jual,stock,start_date,end_date):
@@ -69,7 +69,8 @@ class CMasterStock:
                 'stock':stock,
                 'start_date':start_date,
                 'end_date':end_date,
-                'creator':creator
+                'creator':creator,
+                'status_aktif':'Y'
             }
 
             insertData = MMasterStock().insert_data_master_stock(prmBinding)
@@ -89,9 +90,9 @@ class CMasterStock:
             kode_barang = prmData.get('kode_barang','')
             harga_beli = prmData.get('harga_beli','')
             harga_jual = prmData.get('harga_jual','')
-            stock = prmData.get('stock','')
-            start_date = prmData.get('start_date','')
-            end_date = prmData.get('end_date','')
+            stock = prmData.get('stock_barang','')
+            start_date = prmData.get('start_date','01-01-2024')
+            end_date = prmData.get('end_date','01-01-3000')
             creator = session.get('user_login','')
 
             for value in (kode_mitra,kode_barang,harga_beli,harga_jual,stock,start_date,end_date):
@@ -127,7 +128,8 @@ class CMasterStock:
                 'stock':stock,
                 'start_date':start_date,
                 'end_date':end_date,
-                'creator':creator
+                'creator':creator,
+                'status_aktif':'Y'
             }
 
             updateData = MMasterStock().update_data_master_stock(prmBinding)
